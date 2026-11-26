@@ -520,8 +520,11 @@ a { color: inherit; }
     video.src = BASE + '/mta/' + id + '.mp4';
     button.hidden = true;
     article.classList.add('is-playing');
-    article.classList.remove('is-target');
+    // 편 주소(#07 등)로 들어와 붙은 강조 테두리는 어느 편을 열든 지웁니다.
+    articles.forEach((other) => other.classList.remove('is-target'));
     article.querySelector('.ep-media').append(video);
+    // 누른 재생 단추가 숨겨지므로 포커스를 영상으로 옮깁니다(키보드로 누른 분이 길을 잃지 않게).
+    video.focus({ preventScroll: true });
     history.replaceState(null, '', '#' + article.id);
     article.scrollIntoView({ block: 'start', behavior: smooth ? 'smooth' : 'auto' });
     const started = video.play();
@@ -542,26 +545,31 @@ a { color: inherit; }
     }
   }
 
-  // 길이와 '모두 N분'은 영상 주소의 목록 스크립트(episodes.js)에서 채웁니다. 못 읽으면 비워 둡니다.
-  // fetch 대신 <script>로 읽는 것은 CORS 머리말 없이도 읽히게 하려는 것입니다.
+  // 길이와 '모두 N분'은 영상 주소의 목록 파일(mta/episodes.json)에서 채웁니다. 못 읽으면 비워 둡니다.
+  // 데이터로만 읽고(스크립트로 넣지 않음), 이 페이지에 있는 편의 숫자 길이만 글자(textContent)로 씁니다.
+  // 영상 주소는 응답마다 CORS 머리말(access-control-allow-origin: *)을 붙여 돌려줍니다.
+  const byId = new Map(articles.map((article) => [article.dataset.id, article]));
+  const isLength = (n) => typeof n === 'number' && Number.isFinite(n) && n >= 0;
   const fill = (list) => {
     if (!list || !Array.isArray(list.parts)) return;
-    list.parts.forEach((part) => part.episodes.forEach((ep) => {
-      const article = document.querySelector('article.ep[data-id="' + ep.id + '"]');
-      const slot = article && article.querySelector('[data-duration]');
-      if (slot && Number.isFinite(ep.durationSec)) slot.textContent = mmss(ep.durationSec);
-    }));
+    list.parts.forEach((part) => {
+      if (!part || !Array.isArray(part.episodes)) return;
+      part.episodes.forEach((ep) => {
+        const article = ep && byId.get(ep.id);
+        const slot = article && article.querySelector('[data-duration]');
+        if (slot && isLength(ep.durationSec)) slot.textContent = mmss(ep.durationSec);
+      });
+    });
     const total = document.querySelector('[data-total]');
-    if (total && Number.isFinite(list.totalSec)) {
+    if (total && isLength(list.totalSec)) {
       total.textContent = '모두 ' + Math.round(list.totalSec / 60) + '분';
       total.hidden = false;
     }
   };
-  const listScript = document.createElement('script');
-  listScript.src = BASE + '/mta/episodes.js';
-  listScript.async = true;
-  listScript.onload = () => fill(window.GUIDE_EPISODES);
-  document.body.append(listScript);
+  fetch(BASE + '/mta/episodes.json', { credentials: 'omit' })
+    .then((res) => (res.ok ? res.json() : null))
+    .then(fill)
+    .catch(() => {});
 })();
 </script>
 </body>
