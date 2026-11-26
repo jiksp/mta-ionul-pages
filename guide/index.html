@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MTA 아이오늘 관장님 가이드 영상</title>
+<meta name="description" content="가입 신청부터 알림톡 포인트 충전까지, 관리자 페이지 쓰는 법을 19편의 짧은 영상으로 보여 드립니다.">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0e1216" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="MTA 아이오늘">
+<meta property="og:title" content="MTA 아이오늘 관장님 가이드 영상">
+<meta property="og:description" content="가입 신청부터 알림톡 포인트 충전까지, 관리자 페이지 쓰는 법을 19편의 짧은 영상으로 보여 드립니다.">
+<meta property="og:url" content="https://mta.ionul.co.kr/guide/">
+<link rel="canonical" href="https://mta.ionul.co.kr/guide/">
+<meta property="og:image" content="https://mta.ionul.co.kr/assets/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<link rel="icon" type="image/png" sizes="64x64" href="../assets/img/icon-64.png">
+<link rel="apple-touch-icon" href="../assets/img/icon-180.png">
+<link rel="preconnect" href="https://guide.ionul.co.kr">
+<link rel="preload" href="../assets/fonts/pretendard-guide.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+:root {
+  --bg: #ffffff; --bg-mist: #f4f6f9; --surface: #ffffff;
+  --text: #191f28; --text-2: #4e5968; --text-3: #6b7684;
+  --line: #e3e7ec; --line-strong: #cfd5dc;
+  --accent: #1269e0; --accent-hover: #0d5bc7; --accent-ink: #ffffff; --accent-text: #1269e0; --accent-soft: #e6f0ff;
+  --shot-ring: rgba(25, 31, 40, 0.08);
+  --shadow-shot: 0 1px 2px rgba(22, 42, 74, 0.06), 0 22px 48px -22px rgba(22, 42, 74, 0.28);
+  --shadow-lift: 0 10px 24px -12px rgba(18, 105, 224, 0.55);
+  --font: "Pretendard Guide", "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", system-ui, sans-serif;
+  --wrap: 1180px; --gutter: clamp(16px, 4.4vw, 32px);
+  --r-btn: 12px; --r-shot: 14px;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1216; --bg-mist: #13181e; --surface: #161c23;
+    --text: #e9edf1; --text-2: #a8b2bd; --text-3: #8b96a2;
+    --line: #242b33; --line-strong: #343c46;
+    --accent: #4da3ff; --accent-hover: #6bb3ff; --accent-ink: #0b1220; --accent-text: #6bb3ff; --accent-soft: rgba(77, 163, 255, 0.14);
+    --shot-ring: rgba(255, 255, 255, 0.1);
+    --shadow-shot: 0 1px 2px rgba(0, 0, 0, 0.4), 0 22px 48px -22px rgba(0, 0, 0, 0.7);
+    --shadow-lift: 0 10px 24px -12px rgba(77, 163, 255, 0.45);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e1216; --bg-mist: #13181e; --surface: #161c23;
+  --text: #e9edf1; --text-2: #a8b2bd; --text-3: #8b96a2;
+  --line: #242b33; --line-strong: #343c46;
+  --accent: #4da3ff; --accent-hover: #6bb3ff; --accent-ink: #0b1220; --accent-text: #6bb3ff; --accent-soft: rgba(77, 163, 255, 0.14);
+  --shot-ring: rgba(255, 255, 255, 0.1);
+  --shadow-shot: 0 1px 2px rgba(0, 0, 0, 0.4), 0 22px 48px -22px rgba(0, 0, 0, 0.7);
+  --shadow-lift: 0 10px 24px -12px rgba(77, 163, 255, 0.45);
+  color-scheme: dark;
+}
+@font-face {
+  font-family: "Pretendard Guide";
+  src: url("../assets/fonts/pretendard-guide.woff2") format("woff2");
+  font-weight: 100 900; font-style: normal; font-display: swap;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: 84px; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+body {
+  margin: 0; background: var(--bg); color: var(--text); font-family: var(--font);
+  font-size: 17px; line-height: 1.7; word-break: keep-all; overflow-wrap: break-word;
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+}
+h1, h2, h3, p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+.wrap { width: 100%; max-width: var(--wrap); margin-inline: auto; padding-inline: var(--gutter); }
+
+.site-header { position: sticky; top: 0; z-index: 20; background: var(--bg); border-bottom: 1px solid var(--line); }
+.header-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; height: 64px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; color: var(--text); text-decoration: none; font-weight: 800; font-size: 17px; letter-spacing: -0.03em; flex: none; }
+.brand img { width: 30px; height: 30px; border-radius: 8px; }
+.header-actions { display: flex; align-items: center; gap: 16px; }
+.nav-link { color: var(--text-2); text-decoration: none; font-size: 15px; font-weight: 600; }
+.nav-link:hover { color: var(--text); }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  height: 48px; padding: 0 20px; border-radius: var(--r-btn);
+  font: inherit; font-size: 16px; font-weight: 700; letter-spacing: -0.01em; line-height: 1;
+  text-decoration: none; white-space: nowrap; cursor: pointer; border: 1px solid transparent;
+  transition: transform 0.25s var(--ease), background-color 0.2s, box-shadow 0.25s var(--ease);
+}
+.btn:active { transform: scale(0.98); }
+.btn-sm { height: 40px; padding: 0 14px; font-size: 15px; }
+.btn-primary { background: var(--accent); color: var(--accent-ink); }
+.btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); box-shadow: var(--shadow-lift); }
+
+.hero { padding-block: 56px 8px; }
+.hero h1 { font-size: clamp(32px, 5vw, 48px); line-height: 1.25; letter-spacing: -0.035em; font-weight: 800; }
+.hero .lead { margin-top: 14px; font-size: clamp(17px, 2vw, 19px); color: var(--text-2); max-width: 34em; }
+.hero .facts { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 4px 0; font-size: 15px; font-weight: 600; color: var(--text-3); }
+.hero .facts span:not([hidden]) ~ span:not([hidden])::before { content: "·"; margin-inline: 8px; color: var(--line-strong); }
+
+.part { padding-top: 56px; }
+.part h2 { font-size: clamp(22px, 3vw, 28px); letter-spacing: -0.03em; font-weight: 800; line-height: 1.3; }
+.part h2 span { color: var(--accent-text); }
+.ep-grid { margin-top: 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); gap: 32px 24px; }
+.ep { min-width: 0; scroll-margin-top: 84px; }
+.ep-media { position: relative; aspect-ratio: 16 / 9; border-radius: var(--r-shot); overflow: hidden; background: var(--bg-mist); box-shadow: 0 0 0 1px var(--shot-ring), var(--shadow-shot); }
+.ep-play { all: unset; display: block; width: 100%; height: 100%; cursor: pointer; position: relative; }
+.ep-play[hidden] { display: none; }
+.ep-play img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s var(--ease); }
+.ep-play:hover img { transform: scale(1.02); }
+.ep-play:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; border-radius: var(--r-shot); }
+/* 썸네일 가운데·왼쪽에 편 제목이 있어, 재생 단추는 오른쪽 아래 빈 곳에 둡니다. */
+.ep-play-icon { position: absolute; right: 14px; bottom: 14px; width: 52px; height: 52px; border-radius: 50%; background: rgba(17, 22, 29, 0.72); display: grid; place-items: center; transition: background-color 0.2s; }
+.ep-play:hover .ep-play-icon { background: var(--accent); }
+.ep-play-icon svg { width: 24px; height: 24px; fill: #fff; margin-left: 3px; }
+.ep-media video { display: block; width: 100%; height: 100%; background: #000; }
+.ep-body { padding-top: 14px; }
+.ep-meta { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 700; color: var(--text-3); }
+.ep-no { min-width: 28px; height: 24px; padding: 0 8px; border-radius: 999px; background: var(--accent-soft); color: var(--accent-text); display: inline-grid; place-items: center; font-size: 13px; }
+.ep h3 { margin-top: 8px; font-size: 19px; line-height: 1.4; letter-spacing: -0.02em; font-weight: 700; }
+.ep-sub { margin-top: 4px; font-size: 15px; color: var(--text-2); }
+/* 재생 중인 편은 한 줄을 다 써서 자막이 읽히게 키웁니다. */
+.ep.is-playing { grid-column: 1 / -1; }
+.ep.is-target .ep-media { box-shadow: 0 0 0 3px var(--accent), var(--shadow-shot); }
+
+.note { margin-top: 40px; font-size: 14px; color: var(--text-3); }
+.cta { margin-top: 56px; margin-bottom: 72px; padding: 32px; border-radius: 20px; background: var(--bg-mist); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 24px; }
+.cta p { font-size: clamp(18px, 2.2vw, 21px); font-weight: 700; color: var(--text); letter-spacing: -0.02em; }
+
+.site-footer { background: var(--bg-mist); padding-block: 56px 48px; font-size: 15px; border-top: 1px solid var(--line); }
+.footer-top { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, 1fr); gap: 32px; padding-bottom: 32px; border-bottom: 1px solid var(--line); }
+.footer-brand { display: grid; gap: 10px; align-content: start; }
+.footer-brand p { color: var(--text-2); max-width: 26em; }
+.footer-col { display: grid; gap: 10px; align-content: start; }
+.footer-col strong { font-size: 14px; color: var(--text); }
+.footer-col a { color: var(--text-2); text-decoration: none; }
+.footer-col a:hover { color: var(--text); text-decoration: underline; }
+.footer-col span { color: var(--text-2); }
+.biz { display: flex; flex-wrap: wrap; gap: 6px 22px; padding-top: 24px; margin: 0; font-size: 14px; }
+.biz div { display: flex; gap: 6px; }
+.biz dt { color: var(--text-3); }
+.biz dd { color: var(--text-2); margin: 0; }
+.fine { margin-top: 12px; color: var(--text-3); font-size: 13px; }
+
+@media (max-width: 899px) {
+  .hide-m { display: none !important; }
+  .hero { padding-top: 36px; }
+  .part { padding-top: 44px; }
+}
+@media (max-width: 799px) {
+  .footer-top { grid-template-columns: 1fr 1fr; }
+  .footer-brand { grid-column: 1 / -1; }
+}
+@media (max-width: 599px) {
+  .cta { padding: 24px; }
+  .cta .btn { width: 100%; }
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="../" aria-label="MTA 아이오늘 소개 페이지로">
+      <img src="../assets/img/icon-64.png" width="30" height="30" alt="">
+      <span>MTA 아이오늘</span>
+    </a>
+    <div class="header-actions">
+      <a class="nav-link hide-m" href="https://mta-admin.ionul.co.kr/">관리자 로그인</a>
+      <a class="btn btn-primary btn-sm" href="https://mta-admin.ionul.co.kr/signup">가입 신청하기</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap">
+    <section class="hero">
+      <h1>관장님 가이드 영상</h1>
+      <p class="lead">가입 신청부터 알림톡 포인트 충전까지, 관리자 페이지 쓰는 법을 영상으로 보여 드립니다.</p>
+      <p class="facts"><span>19편</span><span data-total hidden></span><span>소리 없이 자막만 나옵니다</span></p>
+    </section>
+
+    <section class="part" aria-labelledby="part-1">
+      <h2 id="part-1"><span>1부</span> 시작하기</h2>
+      <div class="ep-grid">
+        <article class="ep" id="01" data-id="01-signup-login">
+          <div class="ep-media">
+            <button type="button" class="ep-play" aria-label="1편 가입과 첫 로그인 재생">
+              <img src="https://guide.ionul.co.kr/mta/01-signup-login.jpg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+              <span class="ep-play-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span>
+            </button>
+          </div>
+          <div class="ep-body">
+            <p class="ep-meta"><span class="ep-no">1</span><span class="ep-len" data-duration></span></p>
+            <h3>가입과 첫 로그인</h3>
+            <p class="ep-sub">가입 신청부터 첫 로그인까지</p>
+          </div>
+        </article>
+        <article class="ep" id="02" data-id="02-academy-settings">
+          <div class="ep-media">
+            <button type="button" class="ep-play" aria-label="2편 학원 설정 재생">
+              <img src="https://guide.ionul.co.kr/mta/02-academy-settings.jpg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+              <span class="ep-play-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span>
+            </button>
+          </div>
+          <div class="ep-body">
+            <p class="ep-meta"><span class="ep-no">2</span><span class="ep-len" data-duration></span></p>
+            <h3>학원 설정</h3>
+            <p class="ep-sub">도장 정보 확인하고 빈칸 채우기</p>
+          </div>
+        </article>
+        <article class="ep" id="03" data-id="03-classes">
+          <div class="ep-media">
+            <button type="button" class="ep-play" aria-label="3편 수업 만들기 재생">
+              <img src="https://guide.ionul.co.kr/mta/03-classes.jpg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+              <span class="ep-play-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span>
+            </button>
+          </div>
+          <div class="ep-body">
+            <p class="ep-meta"><span class="ep-no">3</span><span class="ep-len" data-duration></span></p>
+            <h3>수업 만들기</h3>
+            <p class="ep-sub">분류를 만들고 첫 수업 등록하기</p>
+          </div>
+        </article>
+        <article class="ep" id="04" data-id="04-students">
+          <div class="ep-media">
+            <button type="button" class="ep-play" aria-label="4편 수강생 등록과 학부모님 앱 연결 재생">
+              <img src="https://guide.ionul.co.kr/mta/04-students.jpg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+              <span class="ep-play-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span>
+            </button>
+          </div>
+          <div class="ep-body">
+            <p class="ep-meta"><span class="ep-no">4</span><span class="ep-len" data-duration></span></p>
+            <h3>수강생 등록과 학부모님 앱 연결</h3>
+            <p class="ep-sub">초대코드를 보내고 등록을 승인하기</p>
+          </div>
+        </article>
+        <article class="ep" id="05" data-id="05-staff">
+          <div class="ep-media">
+            <button type="button" class="ep-play" aria-label="5편 사범님 계정 만들기 재생">
+              <img src="https://guide.ionul.co.kr/mta/05-staff.jpg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+              <span class="ep-play-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span>
+            </button>
+          </div>
+          <div class="ep-body">
+            <p class="ep-meta"><span class="ep-no">5</span><span class="ep-len" data-duration></span></p>
+            <h3>사범님 계정 만들기</h3>
+            <p class="ep-sub">계정을 만들고 사범님 첫 로그인까지</p>
+          </div>
+        </article>
+      </div>
+    </section>
+    <section class="part" aria-labelledby="part-2">
+      <h2 id="part-2"><span>2부</span> 매일 쓰는 일</h2>
+      <div class="ep-grid">
+        <article class="ep" id="06" data-id="06-dashboard">
+          <div class="ep-media">
+            <button type="button" class="ep-play" aria-label="6편 대시보드에서 오늘 할 일 확인 재생">
+              <img src="https://guide.ionul.co.kr/mta/06-dashboard.jpg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+              <span class="ep-play-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span>
+            </button>
+          </div>
+          <div class="ep-body">
+            <p class="ep-meta"><span class="ep-no">6</span><span class="ep-len" data-duration></span></p>
+            <h3>대시보드에서 오늘 할 일 확인</h3>
+            <p class="ep-sub">현황 숫자부터 지금 할 일까지 한 화면에서</p>
+          </div>
+        </article>
+        <article class="ep" id="07" data-id="07-attendance-check">
+          <div class="ep-media">
+            <button type="button" class="ep-play" aria-label="7편 출석 체크 재생">
+              <img src="https://guide.ionul.co.kr/mta/07-attendance-check.jpg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+              <span class="ep-play-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span>
+            </button>
+          </div>
+          <div class="ep-body">
+            <p class="ep-meta"><span class="ep-no">7</span><span class="ep-len" data-duration></span></p>
+            <h3>출석 체크</h3>
+            <p class="ep-sub">안 온 아이부터, 나머지는 한 번에</p>
+          </div>
+        </article>
+        <article class="ep" id="08" data-id="08-attendance-history">
+          <div class="ep-media">
+            <button type="button" class="ep-play" aria-label="8편 출결 현황 재생">
+              <img src="https://guide.ionul.co.kr/mta/08-attendance-history.jpg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+              <span class="ep-play-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span>
+            </button>
+          </div>
+          <div class="ep-body">
+            <p class="ep-meta"><span class="ep-no">8</span><span class="ep-len" data-duration></span></p>
+            <h3>출결 현황</h3>
+            <p class="ep-sub">처리한 출결을 하루, 한 달 단위로 보기</p>
+          </div>
+        </article>
+        <article class="ep" id="09" data-id="09-shuttle-setup">
+          <div class="ep-media">
+            <button type="button" class="ep-play" aria-label="9편 셔틀 준비 재생">
+              <img src="https://guide.ionul.co.kr/mta/09-shuttle-setup.jpg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+              <span class="ep-play-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span>
+            </button>
+          </div>
+          <div class="ep-body">
+            <p class="ep-meta"><span class="ep-no">9</span><span class="ep-len" data-duration></span></p>
+            <h3>셔틀 준비</h3>
+            <p class="ep-sub">차 등록부터 정류장별 탈 사람까지</p>
+          </div>
+        </article>
+        <article class="ep" id="10" data-id="10-boarding-check">
+          <div class="ep-media">
+            <button type="button" class="ep-play" aria-label="10편 오늘 탑승 체크 재생">
+              <img src="https://guide.ionul.co.kr/mta/10-boarding-check.jpg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+              <span class="ep-play-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span>
+            </button>
+          </div>
+          <div class="ep-body">
+            <p class="ep-meta"><span class="ep-no">10</span><span class="ep-len" data-duration></span></p>
+            <h3>오늘 탑승 체크</h3>
+            <p class="ep-sub">차를 고르고, 타고 내릴 때 한 번씩</p>
+          </div>
+        </article>
+        <article class="ep" id="11" data-id="11-billing-schedule">
+          <div class="ep-media">
+            <button type="button" class="ep-play" aria-label="11편 청구서 예약 재생">
+              <img src="https://guide.ionul.co.kr/mta/11-billing-schedule.jpg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+              <span class="ep-play-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span>
+            </button>
+          </div>
+          <div class="ep-body">
+            <p class="ep-meta"><span class="ep-no">11</span><span class="ep-len" data-duration></span></p>
+            <h3>청구서 예약</h3>
+            <p class="ep-sub">정한 날마다 청구서가 저절로</p>
+          </div>
+        </article>
+        <article class="ep" id="12" data-id="12-tuition-management">
+          <div class="ep-media">
+            <button type="button" class="ep-play" aria-label="12편 수강료 관리 재생">
+              <img src="https://guide.ionul.co.kr/mta/12-tuition-management.jpg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+              <span class="ep-play-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span>
+            </button>
+          </div>
+          <div class="ep-body">
+            <p class="ep-meta"><span class="ep-no">12</span><span class="ep-len" data-duration></span></p>
+            <h3>수강료 관리</h3>
+            <p class="ep-sub">바로 보내고, 받은 돈을 적고</p>
+          </div>
+        </article>
+        <article class="ep" id="13" data-id="13-statistics">
+          <div class="ep-media">
+            <button type="button" class="ep-play" aria-label="13편 수강생·수강료 통계 재생">
+              <img src="https://guide.ionul.co.kr/mta/13-statistics.jpg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+              <span class="ep-play-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span>
+            </button>
+          </div>
+          <div class="ep-body">
+            <p class="ep-meta"><span class="ep-no">13</span><span class="ep-len" data-duration></span></p>
+            <h3>수강생·수강료 통계</h3>
+            <p class="ep-sub">몇 달 치 흐름을 한눈에</p>
+          </div>
+        </article>
+      </div>
+    </section>
+    <section class="part" aria-labelledby="part-3">
+      <h2 id="part-3"><span>3부</span> 가끔 쓰는 일</h2>
+      <div class="ep-grid">
+        <article class="ep" id="14" data-id="14-training-plan">
+          <div class="ep-media">
+            <button type="button" class="ep-play" aria-label="14편 수련계획표 재생">
+              <img src="https://guide.ionul.co.kr/mta/14-training-plan.jpg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+              <span class="ep-play-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span>
+            </button>
+          </div>
+          <div class="ep-body">
+            <p class="ep-meta"><span class="ep-no">14</span><span class="ep-len" data-duration></span></p>
+            <h3>수련계획표</h3>
+            <p class="ep-sub">달력에 바로 적는 한 달 수련</p>
+          </div>
+        </article>
+        <article class="ep" id="15" data-id="15-special-sessions">
+          <div class="ep-media">
+            <button type="button" class="ep-play" aria-label="15편 특별 수업과 예약 재생">
+              <img src="https://guide.ionul.co.kr/mta/15-special-sessions.jpg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+              <span class="ep-play-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span>
+            </button>
+          </div>
+          <div class="ep-body">
+            <p class="ep-meta"><span class="ep-no">15</span><span class="ep-len" data-duration></span></p>
+            <h3>특별 수업과 예약</h3>
+            <p class="ep-sub">방학 특강을 열고, 신청한 아이를 챙기고</p>
+          </div>
+        </article>
+        <article class="ep" id="16" data-id="16-promotion-exams">
+          <div class="ep-media">
+            <button type="button" class="ep-play" aria-label="16편 승급심사 재생">
+              <img src="https://guide.ionul.co.kr/mta/16-promotion-exams.jpg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+              <span class="ep-play-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span>
+            </button>
+          </div>
+          <div class="ep-body">
+            <p class="ep-meta"><span class="ep-no">16</span><span class="ep-len" data-duration></span></p>
+            <h3>승급심사</h3>
+            <p class="ep-sub">심사 회차를 만들고, 채점하고, 급수를 올리고</p>
+          </div>
+        </article>
+        <article class="ep" id="17" data-id="17-competitions">
+          <div class="ep-media">
+            <button type="button" class="ep-play" aria-label="17편 도장 대회 재생">
+              <img src="https://guide.ionul.co.kr/mta/17-competitions.jpg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+              <span class="ep-play-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span>
+            </button>
+          </div>
+          <div class="ep-body">
+            <p class="ep-meta"><span class="ep-no">17</span><span class="ep-len" data-duration></span></p>
+            <h3>도장 대회</h3>
+            <p class="ep-sub">대회를 만들고, 선수를 짜고, 바로 채점하고</p>
+          </div>
+        </article>
+        <article class="ep" id="18" data-id="18-posts">
+          <div class="ep-media">
+            <button type="button" class="ep-play" aria-label="18편 게시물 올리기 재생">
+              <img src="https://guide.ionul.co.kr/mta/18-posts.jpg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+              <span class="ep-play-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span>
+            </button>
+          </div>
+          <div class="ep-body">
+            <p class="ep-meta"><span class="ep-no">18</span><span class="ep-len" data-duration></span></p>
+            <h3>게시물 올리기</h3>
+            <p class="ep-sub">공지와 수업 기록을 올리고, 참석을 묻고</p>
+          </div>
+        </article>
+        <article class="ep" id="19" data-id="19-alimtalk-points">
+          <div class="ep-media">
+            <button type="button" class="ep-play" aria-label="19편 알림톡 포인트 충전 재생">
+              <img src="https://guide.ionul.co.kr/mta/19-alimtalk-points.jpg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+              <span class="ep-play-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span>
+            </button>
+          </div>
+          <div class="ep-body">
+            <p class="ep-meta"><span class="ep-no">19</span><span class="ep-len" data-duration></span></p>
+            <h3>알림톡 포인트 충전</h3>
+            <p class="ep-sub">모자라기 전에 채우고, 안 닿은 안내를 챙기고</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <p class="note">영상에 나온 도장 이름과 사람 이름, 번호는 모두 예시입니다.</p>
+
+    <section class="cta" aria-label="가입 신청">
+      <p>가입 신청을 하시면 본사 승인 뒤 바로 쓰실 수 있습니다.</p>
+      <a class="btn btn-primary" href="https://mta-admin.ionul.co.kr/signup">가입 신청하기</a>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="brand" href="../"><img src="../assets/img/icon-64.png" width="30" height="30" alt=""><span>MTA 아이오늘</span></a>
+        <p>태권도장 관리자 페이지와 학부모님 앱 ‘아이오늘’</p>
+      </div>
+      <nav class="footer-col" aria-label="안내">
+        <strong>안내</strong>
+        <a href="https://ionul.co.kr/support.html">고객지원</a>
+        <a href="https://ionul.co.kr/privacy.html">개인정보처리방침</a>
+        <a href="https://ionul.co.kr/delete-account.html">계정 삭제 요청</a>
+        <a href="https://mta-admin.ionul.co.kr/">관리자 로그인</a>
+      </nav>
+      <div class="footer-col">
+        <strong>문의</strong>
+        <span>궁금한 점은 <a href="mailto:info@ionul.co.kr">info@ionul.co.kr</a>로 보내 주세요.</span>
+        <span>평일 10:00~18:00</span>
+      </div>
+    </div>
+    <dl class="biz">
+      <div><dt>상호</dt><dd>주식회사 케이티지엔</dd></div>
+      <div><dt>대표이사</dt><dd>정규일</dd></div>
+      <div><dt>사업자등록번호</dt><dd>636-81-03595</dd></div>
+      <div><dt>주소</dt><dd>서울특별시 강남구 테헤란로82길 15, 118호(대치동)</dd></div>
+    </dl>
+    <p class="fine">© 2026 KTGN Co., Ltd.</p>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const BASE = 'https://guide.ionul.co.kr';
+  const articles = Array.from(document.querySelectorAll('article.ep'));
+  const smooth = window.matchMedia('(prefers-reduced-motion: no-preference)').matches;
+  const mmss = (sec) => Math.floor(sec / 60) + ':' + String(Math.floor(sec % 60)).padStart(2, '0');
+
+  // 다른 편을 열면 앞 편은 멈추고 썸네일로 되돌립니다. 두 편이 같이 돌지 않게 하고, 받던 영상도 끊습니다.
+  const close = (article) => {
+    const video = article.querySelector('video');
+    if (!video) return;
+    video.pause();
+    video.removeAttribute('src');
+    video.load();
+    video.remove();
+    article.querySelector('.ep-play').hidden = false;
+    article.classList.remove('is-playing');
+  };
+
+  const open = (article) => {
+    articles.forEach((other) => { if (other !== article) close(other); });
+    if (article.querySelector('video')) return;
+    const id = article.dataset.id;
+    const button = article.querySelector('.ep-play');
+    const video = document.createElement('video');
+    video.controls = true;
+    video.muted = true;
+    video.autoplay = true;
+    video.playsInline = true;
+    video.setAttribute('playsinline', '');
+    video.preload = 'auto';
+    video.poster = BASE + '/mta/' + id + '.jpg';
+    video.setAttribute('aria-label', button.getAttribute('aria-label').replace(/ 재생$/, ''));
+    video.src = BASE + '/mta/' + id + '.mp4';
+    button.hidden = true;
+    article.classList.add('is-playing');
+    article.classList.remove('is-target');
+    article.querySelector('.ep-media').append(video);
+    history.replaceState(null, '', '#' + article.id);
+    article.scrollIntoView({ block: 'start', behavior: smooth ? 'smooth' : 'auto' });
+    const started = video.play();
+    if (started) started.catch(() => {});
+  };
+
+  articles.forEach((article) => {
+    article.querySelector('.ep-play').addEventListener('click', () => open(article));
+  });
+
+  // 편 주소(#01~#19)로 들어오면 그 편을 표시합니다. 그 밖의 주소는 그대로 둡니다.
+  const target = /^#(0[1-9]|1[0-9])$/.exec(window.location.hash);
+  if (target) {
+    const article = document.getElementById(target[1]);
+    if (article) {
+      article.classList.add('is-target');
+      article.scrollIntoView({ block: 'start' });
+    }
+  }
+
+  // 길이와 '모두 N분'은 영상 주소의 목록 스크립트(episodes.js)에서 채웁니다. 못 읽으면 비워 둡니다.
+  // fetch 대신 <script>로 읽는 것은 CORS 머리말 없이도 읽히게 하려는 것입니다.
+  const fill = (list) => {
+    if (!list || !Array.isArray(list.parts)) return;
+    list.parts.forEach((part) => part.episodes.forEach((ep) => {
+      const article = document.querySelector('article.ep[data-id="' + ep.id + '"]');
+      const slot = article && article.querySelector('[data-duration]');
+      if (slot && Number.isFinite(ep.durationSec)) slot.textContent = mmss(ep.durationSec);
+    }));
+    const total = document.querySelector('[data-total]');
+    if (total && Number.isFinite(list.totalSec)) {
+      total.textContent = '모두 ' + Math.round(list.totalSec / 60) + '분';
+      total.hidden = false;
+    }
+  };
+  const listScript = document.createElement('script');
+  listScript.src = BASE + '/mta/episodes.js';
+  listScript.async = true;
+  listScript.onload = () => fill(window.GUIDE_EPISODES);
+  document.body.append(listScript);
+})();
+</script>
+</body>
+</html>
