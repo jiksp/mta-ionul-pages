@@ -20,6 +20,7 @@
 <link rel="icon" type="image/png" sizes="64x64" href="../assets/img/icon-64.png">
 <link rel="apple-touch-icon" href="../assets/img/icon-180.png">
 <link rel="preconnect" href="https://guide.ionul.co.kr">
+<link rel="preconnect" href="https://guide.ionul.co.kr" crossorigin>
 <link rel="preload" href="../assets/fonts/pretendard-guide.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 :root {
@@ -117,6 +118,8 @@ a { color: inherit; }
 .ep-play:hover .ep-play-icon { background: var(--accent); }
 .ep-play-icon svg { width: 24px; height: 24px; fill: #fff; margin-left: 3px; }
 .ep-media video { display: block; width: 100%; height: 100%; background: #000; }
+/* 영상 칸이 넘치는 것을 잘라 내므로 포커스 테두리는 안쪽에 그립니다(재생 단추와 같게). */
+.ep-media video:focus-visible { outline-offset: -3px; }
 .ep-body { padding-top: 14px; }
 .ep-meta { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 700; color: var(--text-3); }
 .ep-no { min-width: 28px; height: 24px; padding: 0 8px; border-radius: 999px; background: var(--accent-soft); color: var(--accent-text); display: inline-grid; place-items: center; font-size: 13px; }
